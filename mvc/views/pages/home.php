@@ -1,3 +1,4 @@
+<div class = "text-dark">
 <h2>
 <?php
 echo $data["SoThich"][1];
@@ -11,4 +12,5 @@ while($row = mysqli_fetch_array($data["Book"])){
     
 }
 ?>
+</div>
 

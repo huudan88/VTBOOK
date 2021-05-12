@@ -10,8 +10,8 @@ class Home extends Controller{
         
 
         // Call Views
-        $this->view("MasterLayout", [
-            "Page"=>"news",
+        $this->view("Master1", [
+            "Page"=>"home",
             "Mau"=>"red",
             "SoThich"=>["A", "B", "C"],
             "Book" => $book->getBooks()

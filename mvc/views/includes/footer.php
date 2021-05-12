@@ -1,1 +1,0 @@
-<div class="detail_footer"></div>
