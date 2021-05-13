@@ -8,7 +8,16 @@
 
     <!-- Link CSS Bootstrap -->
     <link rel="stylesheet" type="text/css" href="/VTBOOK/public/css/bootstrap/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="/VTBOOK/public/css/style/dcv_style.css">
+	<link rel="stylesheet" type="text/css" href="/VTBOOK/public/css/style/mystyle.css">
+
+    <!-- Link Datatables -->
+    <link rel="stylesheet" type="text/css" href="/VTBOOK/public/dataTables/datatables.min.css"/>
+    <script type="text/javascript" src="/VTBOOK/public/dataTables/datatables.min.js"></script>
+    
+    <!-- js library -->
+    <script type="text/javascript" src="/VTBOOK/public/js/bootstrap/bootstrap.js"></script> 
+    <script type="text/javascript" src="/VTBOOK/public/js/jquery/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="/VTBOOK/public/js/jquery/myjquery.js"></script>
 </head>
 <body>
     <div  class = "container">
@@ -26,9 +35,7 @@
 		
 
     </div>
-    <!-- js library -->
-    <script type="text/javascript" src="/VTBOOK/public/js/dcv_js.js"></script>
-    <script type="text/javascript" src="/VTBOOK/public/js/bootstrap/bootstrap.js"></script> 
-    <script type="text/javascript" src="/VTBOOK/public/js/jquery/jquery-3.6.0.js"></script>
+
+</div>
 </body>
 </html>

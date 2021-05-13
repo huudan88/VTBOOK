@@ -1,6 +1,6 @@
 <div>
 
-<div class="table_view">
+<div class="table_view my-4">
     <?php
     //pre-process data
     $printedData = json_decode($data['dbBook'], true);
@@ -21,9 +21,9 @@
         
     ?>
 
-    <table class="table table-primary">
+    <table class="table table-hover">
     <thead>
-        <tr>
+        <tr id="list-header" class="bg-secondary">
         <th scope="col">#</th>
         <th scope="col">First</th>
         <th scope="col">Last</th>
