@@ -7,26 +7,28 @@ class App{
 
     function __construct(){
  
-        $arr = $this->UrlProcess();
+        $controllerArr = $this->UrlProcess();
  
         // Controller
-        if( file_exists("./mvc/controllers/".$arr[0].".php") ){
-            $this->controller = $arr[0];
-            unset($arr[0]);
+        if (isset($controllerArr[0])){
+            if( file_exists("./mvc/controllers/".$controllerArr[0].".php") ){
+                $this->controller = $controllerArr[0];
+                unset($controllerArr[0]);
+            }
         }
         require_once "./mvc/controllers/". $this->controller .".php";
         $this->controller = new $this->controller;
 
         // Action
-        if(isset($arr[1])){
-            if( method_exists( $this->controller , $arr[1]) ){
-                $this->action = $arr[1];
+        if(isset($controllerArr[1])){
+            if( method_exists( $this->controller , $controllerArr[1]) ){
+                $this->action = $controllerArr[1];
             }
-            unset($arr[1]);
+            unset($controllerArr[1]);
         }
 
         // Params
-        $this->params = $arr?array_values($arr):[];
+        $this->params = $controllerArr?array_values($controllerArr):[];
 
         call_user_func_array([$this->controller, $this->action], $this->params );
 
@@ -34,7 +36,12 @@ class App{
 
     function UrlProcess(){
         if( isset($_GET["url"]) ){
-            return explode("/", filter_var(trim($_GET["url"], "/")));
+            // trim the spaces
+			$url = trim($_GET['url']);
+			//filter the data to match corresponding data type
+			$url = filter_var($url);
+			//split the url by '/' sign
+			return explode('/', $url);
         }
     }
 

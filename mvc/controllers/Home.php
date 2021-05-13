@@ -4,34 +4,24 @@
 
 class Home extends Controller{
 
-    // Must have SayHi()
+    public $BookModel;
+
+    public function __construct(){
+        // Model
+        $this->BookModel = $this->requireModel("BookModel");
+    }
+
+    // viewBooks
     function viewBooks(){
-        $book = $this->model("BookModel");
-        
+        $bookList = $this->BookModel->getBooks();
 
         // Call Views
-        $this->view("Master1", [
-            "Page"=>"home",
-            "Mau"=>"red",
-            "SoThich"=>["A", "B", "C"],
-            "Book" => $book->getBooks()
+        $this->requireView("Master1", [
+            "page" => "home",
+            "dbBook" => $bookList
         ]);
 
     }
 
-    function Show($a, $b){        
-        // Call Models
-        $teo = $this->model("BookModel");
-        $tong = $teo->Tong($a, $b); // 3
-
-        // Call Views
-        $this->view("MasterLayout", [
-            "Page"=>"news",
-            "Number"=>$tong,
-            "Mau"=>"red",
-            "SoThich"=>["A", "B", "C"],
-            "SV" => $teo->SinhVien()
-        ]);
-    }
 }
 ?>

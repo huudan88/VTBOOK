@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="/VTBOOK/public/css/style/dcv_style.css">
 </head>
 <body>
-    <div class="wrapper">
+    <div  class = "container">
         <!-- Header--> 
 		<?php require_once "blocks/header.php" ?>
 

@@ -1,9 +1,10 @@
 <?php
 class BookModel extends DB{
     //Get books
-    public function getBooks(){
-        $qr = "SELECT * FROM books";
-        return mysqli_query($this->con, $qr);
+    function getBooks(){
+        $sql = "CALL GetAllBooks()"; //call stored procedure
+        $bookList = $this->sqlExecution($sql);
+		return json_encode($bookList);
     }
 
 }
