@@ -3,26 +3,51 @@ var urlBooks="../vtbook/API_Books";
 function initBookData(){
     //Show book data
     //Data from an URL ?
-    $.post(urlBooks, function(responseData) {
-        //alert(responseData)
-        modifyData = JSON.parse(responseData)
-        table = $('#tblAllVTBooks').DataTable({
-            responsive: true,
-            "processing": true,
-            data: modifyData,
-            columns:[
-                { data: 'book_id' },		
-                { data: 'book_name' },
-                { data: 'cat_name' },
-                { data: 'b_status' },
-                { data: 'aut_name' },
-                { data: 'pub_name' },
-                { data: 'Isdonate' },
-                { data: 'user_name' }
-            ]
-        });
-    }).fail(function(){
-        alert ("Cannot get data from URL");
+    // $.post(urlBooks, function(responseData) {
+    //     //alert(responseData)
+    //     modifyData = JSON.parse(responseData)
+    //     table = $('#tblAllVTBooks').DataTable({
+    //         responsive: true,
+    //         "processing": true,
+    //         'ajax': {
+
+    //             "url": urlBooks,
+    //             "type": "POST",
+    //             "dataSrc": ''
+    //             },
+    //         columns:[
+    //             { data: 'book_id' },		
+    //             { data: 'book_name' },
+    //             { data: 'cat_name' },
+    //             { data: 'b_status' },
+    //             { data: 'aut_name' },
+    //             { data: 'pub_name' },
+    //             { data: 'Isdonate' },
+    //             { data: 'user_name' }
+    //         ]
+    //     });
+    // }).fail(function(){
+    //     alert ("Cannot get data from URL");
+    // });
+    table = $('#tblAllVTBooks').DataTable({
+        responsive: true,
+        "processing": true,
+        'ajax': {
+
+            "url": urlBooks,
+            "type": "POST",
+            "dataSrc": ''
+            },
+        columns:[
+            { data: 'book_id' },		
+            { data: 'book_name' },
+            { data: 'cat_name' },
+            { data: 'b_status' },
+            { data: 'aut_name' },
+            { data: 'pub_name' },
+            { data: 'Isdonate' },
+            { data: 'user_name' }
+        ]
     });
 }
 
@@ -38,6 +63,7 @@ $(document).ready(function (){
     });
     $("#btnRefeshData").on("click", function(){
 		//alert("reload data...")
-		$('#tblAllVTBooks').DataTable.ajax.reload();
+		// table.ajax.reload(null, false);
+        table.reload(null, false);
 	});
 });
