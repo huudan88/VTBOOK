@@ -9,15 +9,20 @@
     <!-- Link CSS Bootstrap -->
     <link rel="stylesheet" type="text/css" href="/VTBOOK/public/css/bootstrap/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="/VTBOOK/public/css/style/mystyle.css">
-
-    <!-- Link Datatables -->
-    <link rel="stylesheet" type="text/css" href="/VTBOOK/public/dataTables/datatables.min.css"/>
-    <script type="text/javascript" src="/VTBOOK/public/dataTables/datatables.min.js"></script>
-    
     <!-- js library -->
     <script type="text/javascript" src="/VTBOOK/public/js/bootstrap/bootstrap.js"></script> 
     <script type="text/javascript" src="/VTBOOK/public/js/jquery/jquery-3.6.0.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+    <!-- Link Datatables -->
+    <link rel="stylesheet" type="text/css" href="/VTBOOK/public/dataTables/datatables.css"/>
+    <script type="text/javascript" src="/VTBOOK/public/dataTables/datatables.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"/>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> -->
+    
+    <!-- my js -->
     <script type="text/javascript" src="/VTBOOK/public/js/jquery/myjquery.js"></script>
+    
 </head>
 <body>
     <div  class = "container">

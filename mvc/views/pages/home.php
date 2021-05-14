@@ -3,13 +3,14 @@
 <div class="table_view my-4">
     <?php
     //pre-process data
-    $printedData = json_decode($data['dbBook'], true);
-    //$printedData = $data['dbBook']
-    $tableHeader = ['Book ID', 'Book name', 'Description'];
-    $dataOrder =    ['book_id','book_name','book_description'];
+    //$printedData = json_decode($data['dbBook'], true);
+    //$printedData = ($data['dbBook']);
+    //$tableHeader = ['Book ID', 'Book name', 'Description'];
+    //$dataOrder =    ['book_id','book_name','book_description'];
     //echo $data['dbBook'];
-    //print_r ($data['dbBook']);
+    //echo ($data['dbBook']);
     //print_r ($printedData);
+    //echo ($printedData);
     //Build up a table
     //tableBuildUp($tableHeader, $dataOrder, $printedData);
 
@@ -21,36 +22,24 @@
         
     ?>
 
-    <table class="table table-hover">
+    <table id="tblAllVTBooks" class="table table-hover">
     <thead>
         <tr id="list-header" class="bg-secondary">
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Book ID</th>
+        <th scope="col">Book name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Status</th>
+        <th scope="col">Author</th>
+        <th scope="col">Publisher</th>
+        <th scope="col">Donate</th>
+        <th scope="col">Donater</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        </tr>
-        <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        </tr>
+
     </tbody>
     </table>
+    <button type="button" class="btn btn-primary" id="btnRefeshData">Refresh</button>
 </div>
 
 </div>
