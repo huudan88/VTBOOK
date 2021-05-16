@@ -1,14 +1,13 @@
 <?php
 class App{
 
-    protected $controller="Home";
-    protected $action="viewBooks";
+    protected $controller="Book";
+    protected $action="sayHi";
     protected $params=[];
 
     function __construct(){
  
         $controllerArr = $this->UrlProcess();
- 
         // Controller
         if (isset($controllerArr[0])){
             if( file_exists("./mvc/controllers/".$controllerArr[0].".php") ){
@@ -31,7 +30,7 @@ class App{
         $this->params = $controllerArr?array_values($controllerArr):[];
 
         call_user_func_array([$this->controller, $this->action], $this->params );
-
+        
     }
 
     function UrlProcess(){

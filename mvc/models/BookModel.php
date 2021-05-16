@@ -7,5 +7,11 @@ class BookModel extends DB{
 		return json_encode($bookList);
     }
 
+    //Insert books
+    function insertBook(){
+        $sql = "CALL InsertBooks()"; //call stored procedure
+        $addBook = $this->sqlInsertUpdate($sql);
+    }
+
 }
 ?>

@@ -1,5 +1,5 @@
-var table;
-var urlBooks="../vtbook/API_Books";
+var tblBooks;
+var urlBooks="http://" + window.location.hostname + "/VTBook/API_Books/viewBooks";
 function initBookData(){
     //Show book data
     //Data from an URL ?
@@ -29,15 +29,15 @@ function initBookData(){
     // }).fail(function(){
     //     alert ("Cannot get data from URL");
     // });
-    table = $('#tblAllVTBooks').DataTable({
-        responsive: true,
+    tblBooks = $('#tblAllVTBooks').DataTable({
+        "responsive": true,
         "processing": true,
         'ajax': {
-
             "url": urlBooks,
             "type": "POST",
-            "dataSrc": ''
+            "dataSrc": ""
             },
+        rowId: 'book_id',
         columns:[
             { data: 'book_id' },		
             { data: 'book_name' },
@@ -52,18 +52,33 @@ function initBookData(){
 }
 
 $(document).ready(function (){
-    initBookData();
-    $("#list-header").on({
-        mouseenter: function(){
-            $(this).css("background-color","lightblue");
-        },
-        // mouseleave: function(){
-        //     $(this).css("background-color","lightgray");
-        // }
-    });
-    $("#btnRefeshData").on("click", function(){
-		//alert("reload data...")
-		// table.ajax.reload(null, false);
-        table.reload(null, false);
-	});
+    
+    //Show book table
+    if ($('#tblAllVTBooks').length) {
+        initBookData();
+
+        //Mouse event for header of book table
+        $("#list-header").on({
+            mouseenter: function(){
+                $(this).css("background-color","lightwhite");
+            },
+            mouseleave: function(){
+                $(this).css("background-color","lightgray");
+            }
+        });
+        //refeshBook table
+        $("#btnRefeshBook").on("click", function(){
+            //alert("reload data...")
+            tblBooks.ajax.reload(null, false);
+            //table.reload(null, false);
+        });
+
+        //Click row table
+        $('#tblAllVTBooks').on( 'click', 'tr', function () {
+            var id = tblBooks.row( this ).id();
+         
+            alert( 'Clicked row id '+id );
+        } );
+    }
+    
 });

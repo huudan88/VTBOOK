@@ -1,5 +1,9 @@
 .contents {
-  color: #737c73;
+  margin-top: 50px;
+  margin-bottom: 100px;
   height: 70vh; }
+
+#list-header {
+  background-color: lightgray; }
 
 /*# sourceMappingURL=mystyle.css.map */

@@ -38,6 +38,7 @@ class DB{
 		return $sqlData;
 	}
 
+	// Run sql query and return result
     function sqlInsertUpdate($sql){
 		$this->init_Conn();
 
