@@ -37,6 +37,6 @@
     <!-- js Datatables -->
     <script type="text/javascript" src="/VTBOOK/public/dataTables/datatables.js"></script>
     <!-- my js -->
-    <script type="text/javascript" src="/VTBOOK/public/js/jquery/myjquery.js"></script>
+    <script type="text/javascript" src="/VTBOOK/public/js/personal/jsBook.js"></script>
 </body>
 </html>

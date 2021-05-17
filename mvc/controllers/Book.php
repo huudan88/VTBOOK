@@ -5,7 +5,7 @@
 class Book extends Controller{
 
     public $BookModel;
-    public $creater;
+    public $creater = "Admin";
 
     public function __construct(){
         // Model
@@ -33,10 +33,29 @@ class Book extends Controller{
             $aut_id = $_POST["Author"];
             $Isdonate = $_POST["Isdonate"];
             $donater_id = $_POST["Donater"];
-            $b_status_id = $_POST["BookName"];
+            $b_status_id = $_POST["BookStatus"];
             $pub_id = $_POST["Publisher"];
-            echo($book_id);
+            $creater = $creater;
+            $create_date = date("Y-m-d");
+            print_r ($_POST);
         }
+
+        // Insert book data
+        // $isSuccess = $this->BookModel->insertBook(
+        //                                             $book_id,
+        //                                             $book_name,
+        //                                             $book_description,
+        //                                             $cat_id,
+        //                                             $aut_id,
+        //                                             $Isdonate,
+        //                                             $donater_id,
+        //                                             $b_status_id,
+        //                                             $pub_id,
+        //                                             $creater,
+        //                                             $create_date
+        //                                         );
+        
+        // Show notification
     }
 
 }

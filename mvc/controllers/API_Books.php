@@ -14,5 +14,10 @@ class API_Books extends Controller{
         echo $bookList;
     }
 
+    // get infomation relate to books
+    function getInfoBooks(){
+        
+    }
+
 }
 ?>
