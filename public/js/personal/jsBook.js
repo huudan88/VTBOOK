@@ -63,38 +63,35 @@ $("#btnAddBook").on('click', function (event) {
         data: {},
         dataType: "json",
         success: function (data) {
-            $("#emp_stt").html("");
-            data.empStt.forEach(function (empStt) {
-                $("#emp_stt").append("<option value=" + empStt.id + ">" + empStt.subCatName + "</option>");
+            //select category
+            $("#inputBookCategory").html("");
+            data.CategoryList.forEach(function (CategoryList) {
+                $("#inputBookCategory").append("<option value=" + CategoryList.cat_id + ">" + CategoryList.cat_name + "</option>");
+            });
+            
+            //select book status
+            $("#inputBookStatus").html("");
+            data.BookStatusList.forEach(function (BookStatusList) {
+                $("#inputBookStatus").append("<option value=" + BookStatusList.b_status_id + ">" + BookStatusList.b_status + "</option>");
             });
 
-            $("#emp_position").html('<option value="" selected>Select a position</option>');
-            data.empPosition.forEach(function (empPosCat) {
-                $("#emp_position").append("<option value=" + empPosCat.id + ">" + empPosCat.subCatName + "</option>");
+            //select user to update donator
+            $("#inputDonator").html("");
+            data.UserList.forEach(function (UserList) {
+                $("#inputDonator").append("<option value=" + UserList.user_id + ">" + UserList.user_name + "</option>");
             });
 
-            $("#emp_grade").html('<option value="" selected>Select a grade</option>');
-            data.empGrade.forEach(function (empGrade) {
-                $("#emp_grade").append("<option value=" + empGrade.id + ">" + empGrade.subCatName + "</option>");
-            });
-
-            $("#emp_dept").html('<option value="" selected>Select a department</option>');
-            data.dept.forEach(function (dept) {
-                $("#emp_dept").append("<option value=" + dept.id + ">" + dept.deptName + " - " + dept.partName + "</option>");
-            });
-            $("#alloc_proj").html('<option value="" selected>Select a project</option>');
-            data.projLi.forEach(function (projLi) {
-                $("#alloc_proj").append("<option value=" + projLi.id + ">" + projLi.projName + "</option>");
-            });
-            $("#alloc_role").html('<option value="" selected>Select a role</option>');
-            data.allocRole.forEach(function (allocRole) {
-                $("#alloc_role").append("<option value=" + allocRole.id + ">" + allocRole.roleName + "</option>");
-            });
-            $("#cert").html("");
-            data.certList.forEach(function (certList) {
-                $("#cert").append("<option value=" + certList.id + ">" + certList.certName + "</option>");
-            });
-
+            //select Author
+            $("#inputAuthor").html("");
+            data.AuthorList.forEach(function (AuthorList) {
+                $("#inputAuthor").append("<option value=" + AuthorList.aut_id + ">" + AuthorList.aut_name + "</option>");
+            }); 
+            
+            //select publisher
+            $("#inputPublisher").html("");
+            data.PublisherList.forEach(function (PublisherList) {
+                $("#inputPublisher").append("<option value=" + PublisherList.pub_id + ">" + PublisherList.pub_name + "</option>");
+            });             
         }
     });
 

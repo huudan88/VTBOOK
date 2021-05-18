@@ -34,7 +34,7 @@
             <th scope="col">Author</th>
             <th scope="col">Publisher</th>
             <th scope="col">Source</th>
-            <th scope="col">Donater</th>
+            <th scope="col">Donator</th>
             </tr>
         </thead>
         <tbody>
@@ -52,3 +52,16 @@
 <!-- Modal add Book form-->
 <?php require_once "./mvc/views/blocks/addBookForm.php" ?>
 
+<!-- Notification add/upate success -->
+<?php if( isset($data["result"]) ){ ?>
+    <?php 
+        if ($data["result"] == true ){
+            echo '<div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> This alert box could indicate a successful or positive action.
+            </div>';
+        }else{
+            echo "Đăng kí thất bại";
+        }
+    ?>
+<?php } ?>

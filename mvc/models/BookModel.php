@@ -15,7 +15,7 @@ class BookModel extends DB{
                         $cat_id,
                         $aut_id,
                         $Isdonate,
-                        $donater_id,
+                        $donator_id,
                         $b_status_id,
                         $pub_id,
                         $creater,
@@ -25,20 +25,20 @@ class BookModel extends DB{
         $isSuccess = false;
 
         //call stored procedure
-        $sql = "CALL InsertBooks($book_id,
-                                $book_name,
-                                $book_description,
-                                $cat_id,
-                                $aut_id,
-                                $Isdonate,
-                                $donater_id,
-                                $b_status_id,
-                                $pub_id,
-                                $creater,
-                                $create_date)";
+        $sql = "CALL InsertBooks('$book_id',
+                                '$book_name',
+                                '$book_description',
+                                '$cat_id',
+                                '$aut_id',
+                                '$Isdonate',
+                                '$donator_id',
+                                '$b_status_id',
+                                '$pub_id',
+                                '$creater',
+                                '$create_date')";
 
         $isSuccess = $this->sqlInsertUpdate($sql);
-        echo $isSuccess;
+        return json_encode($isSuccess);
     }
 
 }

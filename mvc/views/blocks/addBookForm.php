@@ -26,37 +26,36 @@
                 <div class="col-md-4">
                     <label for="inputBookCategory" class="form-label">Book category</label>
                     <select name="BookCate" id="inputBookCategory" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
+                    <!-- <option selected>Choose...</option> -->
                     </select>
                 </div>
                 <div class="col-md-4">
                     <label for="inputBookStatus" class="form-label">Status</label>
                     <select name="BookStatus" id="inputBookStatus" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
+                    <!-- <option selected>Choose...</option>
+                    <option>...</option> -->
                     </select>
                 </div>
                 <div class="col-md-4">
                     <label for="inputAuthor" class="form-label">Author</label>
                     <select name="Author" id="inputAuthor" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
+                    <!-- <option selected>Choose...</option>
+                    <option>...</option> -->
                     </select>
                 </div>
 
                 <div class="col-md-4">
                     <label for="inputPublisher" class="form-label">Publisher</label>
                     <select name="Publisher" id="inputPublisher" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
+                    <!-- <option selected>Choose...</option>
+                    <option>...</option> -->
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <label for="inputDonater" class="form-label">Donater</label>
-                    <select name="Donater" id="inputDonater" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
+                    <label for="inputDonator" class="form-label">Donator</label>
+                    <select name="Donator" id="inputDonator" class="form-select">
+                    <!-- <option selected>Choose...</option>
+                    <option>...</option> -->
                     </select>
                 </div>
                 <div class="col-md-4">
