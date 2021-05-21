@@ -169,8 +169,13 @@ $(document).ready(function (){
         $('#tblAllVTBooks').on( 'dblclick', 'tbody tr', function (event) {
             event.preventDefault();
             var book_id = tblBooks.row( this ).id();
-         
+
+            // Set borrow check box default
+            $("#flexBrrBook").prop('checked', false);
+            // Show updateBook modal
             $("#updateBook").modal("show");
+
+            // Add book info to update form
             $.ajax({
                 url: '/VTBook/API_Books/GetInfoBaseBookID/"'+book_id+'"',
                 method: "POST",
@@ -227,7 +232,8 @@ $(document).ready(function (){
                     $("#updateIsdonate").val(data.BookInfo[0].Isdonate); 
                 }
             });
-        } );
+
+        });
     }
 
 
@@ -270,4 +276,13 @@ $(document).ready(function (){
         todayBtn: true
     });
 
+    // enable to update borrow
+    $("#flexBrrBook").change(function(){
+        if($('#flexBrrBook').is(":checked")){
+            $('#brrDate').prop('disabled', false)
+            console.log("test")
+        }else{
+            $('#brrDate').prop('disabled', true)
+        }
+    });    
 });

@@ -70,7 +70,7 @@
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexBrrBook" />
                         <label class="form-check-label" for="flexBrrBook"
-                            >Swich to update borrow</label>
+                            >Switch to update borrow</label>
                     </div>
                 </div>
                 <div class="col-md-4">
