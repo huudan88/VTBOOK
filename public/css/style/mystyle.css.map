@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,SAAS;EACL,UAAU,EAAE,IAAI;EAChB,aAAa,EAAE,KAAK;EACpB,MAAM,EAAE,IAAI;;AAEhB,YAAY;EACR,gBAAgB,EAAE,SAAS",
+"mappings": "AAAA,SAAS;EACL,UAAU,EAAE,GAAG;EACf,aAAa,EAAE,KAAK;EACpB,MAAM,EAAE,IAAI;;AAEhB,YAAY;EACR,gBAAgB,EAAE,SAAS",
 "sources": ["mystyle.scss"],
 "names": [],
 "file": "mystyle.css"

@@ -1,13 +1,13 @@
-<!-- Modal add/update Book-->
+<!-- Modal add Book-->
 <div class="modal fade" id="addUpdateBook" tabindex="-1" aria-labelledby="addUpdateBooklbl" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="addUpdateBooklbl">Book</h5>
+            <h5 class="modal-title" id="addUpdateBooklbl">Add new book</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <!-- Form add/update Book-->
+            <!-- Form add Book-->
             <form class="row g-3" action="/VTBook/Book/insertBook"  method="post">
                 <div class="col-md-3">
                     <label for="inputBookID" class="form-label">Book ID</label>
@@ -53,10 +53,9 @@
                 </div>
                 <div class="col-md-4">
                     <label for="inputDonator" class="form-label">Donator</label>
-                    <select name="Donator" id="inputDonator" class="form-select">
-                    <!-- <option selected>Choose...</option>
-                    <option>...</option> -->
-                    </select>
+                    <input type="text" class="form-control" name="DonatorDisplay" id="inputDonator">
+                    <input type="hidden" class="form-control" name="Donator" id="hiddenDonatorID">
+                    <div id="mesDonator"></div>
                 </div>
                 <div class="col-md-4">
                     <label for="Isdonate" class="form-label">Donate or borrow</label>
@@ -68,7 +67,7 @@
                 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary" name="btnSubmitBook">Submit</button>
+                  <button type="submit" class="btn btn-primary" name="btnSubmitBook" id="btnSubmitBook">Submit</button>
                 </div>
             </form>
         </div>

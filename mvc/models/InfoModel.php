@@ -6,7 +6,7 @@ class InfoModel extends DB{
         //call stored procedure
         $sql = "CALL GetUsers()"; 
         $userList = $this->sqlExecution($sql);
-		return json_encode($userList);
+		return $userList;
     }
 
     //Get book category
@@ -14,7 +14,7 @@ class InfoModel extends DB{
         //call stored procedure
         $sql = "CALL GetBookCategory()"; 
         $categoryList = $this->sqlExecution($sql);
-        return json_encode($categoryList);
+        return $categoryList;
     }
 
     //Get publisher
@@ -22,7 +22,7 @@ class InfoModel extends DB{
         //call stored procedure
         $sql = "CALL GetPublisher()"; 
         $pubList = $this->sqlExecution($sql);
-        return json_encode($pubList);
+        return $pubList;
     }
 
     //Get publisher
@@ -30,7 +30,7 @@ class InfoModel extends DB{
         //call stored procedure
         $sql = "CALL GetAuthor()"; 
         $autList = $this->sqlExecution($sql);
-        return json_encode($autList);
+        return $autList;
     }
 
     //Get book status
@@ -38,7 +38,7 @@ class InfoModel extends DB{
         //call stored procedure
         $sql = "CALL GetBookStatus()"; 
         $autList = $this->sqlExecution($sql);
-        return json_encode($autList);
+        return $autList;
     }
 
 }

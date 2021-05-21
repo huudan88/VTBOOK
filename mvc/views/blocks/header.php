@@ -6,13 +6,13 @@
             <em class="h6">Barack Obama</em></p>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/VTBOOK/book">Home</a>
+                    <a class="nav-link active" href="/VTBOOK/Book">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/VTBOOK/contact">Books</a>
+                    <a class="nav-link" href="/VTBOOK/Borrow">TRANSACTION</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/VTBOOK/addBookForm">Link</a>
+                    <a class="nav-link" href="#">Link</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>

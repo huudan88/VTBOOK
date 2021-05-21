@@ -51,6 +51,16 @@ class DB{
 		return $results;
 	}
 
+	// Run sql query and return mysqli_query
+	function sqlExeMysqli_query($sql){
+		$this->init_Conn();
+
+		$queryResult = mysqli_query($this->conn, $sql);
+
+		mysqli_close($this->conn);
+		return $queryResult;
+	}
+
 }
 
 ?>

@@ -64,42 +64,87 @@ $("#btnAddBook").on('click', function (event) {
         dataType: "json",
         success: function (data) {
             //select category
-            $("#inputBookCategory").html("");
-            data.CategoryList.forEach(function (CategoryList) {
-                $("#inputBookCategory").append("<option value=" + CategoryList.cat_id + ">" + CategoryList.cat_name + "</option>");
-            });
-            
+            if ($('#inputBookCategory option').length == 0){
+                data.CategoryList.forEach(function (CategoryList) {
+                    $("#inputBookCategory").append("<option value=" + CategoryList.cat_id + ">" + CategoryList.cat_name + "</option>");
+                });
+            }
+
             //select book status
-            $("#inputBookStatus").html("");
-            data.BookStatusList.forEach(function (BookStatusList) {
-                $("#inputBookStatus").append("<option value=" + BookStatusList.b_status_id + ">" + BookStatusList.b_status + "</option>");
-            });
+            if ($('#inputBookStatus option').length == 0){
+                data.BookStatusList.forEach(function (BookStatusList) {
+                    $("#inputBookStatus").append("<option value=" + BookStatusList.b_status_id + ">" + BookStatusList.b_status + "</option>");
+                });
+            }
 
             //select user to update donator
-            $("#inputDonator").html("");
-            data.UserList.forEach(function (UserList) {
-                $("#inputDonator").append("<option value=" + UserList.user_id + ">" + UserList.user_name + "</option>");
-            });
+            // if ($('#inputDonator option').length == 0){
+            //     data.UserList.forEach(function (UserList) {
+            //         $("#inputDonator").append("<option value=" + UserList.user_id + ">" + UserList.user_name + "</option>");
+            //     });
+            // }
 
             //select Author
-            $("#inputAuthor").html("");
-            data.AuthorList.forEach(function (AuthorList) {
-                $("#inputAuthor").append("<option value=" + AuthorList.aut_id + ">" + AuthorList.aut_name + "</option>");
-            }); 
-            
+            if ($('#inputAuthor option').length == 0){
+                data.AuthorList.forEach(function (AuthorList) {
+                    $("#inputAuthor").append("<option value=" + AuthorList.aut_id + ">" + AuthorList.aut_name + "</option>");
+                }); 
+            }
+
             //select publisher
-            $("#inputPublisher").html("");
-            data.PublisherList.forEach(function (PublisherList) {
-                $("#inputPublisher").append("<option value=" + PublisherList.pub_id + ">" + PublisherList.pub_name + "</option>");
-            });             
+            if ($('#inputPublisher option').length == 0){
+                data.PublisherList.forEach(function (PublisherList) {
+                    $("#inputPublisher").append("<option value=" + PublisherList.pub_id + ">" + PublisherList.pub_name + "</option>");
+                });    
+            }         
         }
     });
 
     // $("#addUpdateBook").modal("show");
 });
 
+// Update notification after add data
+$("#btnSubmitBook").on('click', function () {
+    alert(1);
+});
+
+//Function check donator
+function checkDonator($inputDonator,$outputDonator,$noti){
+    $.ajax({
+        url: '/VTBook/Ajax/checkUsername',
+        method: "POST",
+        data: {un: $inputDonator},
+        dataType: "json",
+        success: function (data) {
+            if(data != ''){
+                $($noti).css({"color":"green"})
+                $($noti).html("User name is valid");
+                $($outputDonator).val(data[0].user_id);
+            }else{
+                $($noti).css({"color":"red"})
+                $($noti).html("User name is invalid");
+            }
+        }
+    });
+}
+
+// //Function get donator ID
+// function getDonator($inputDonator,$outputDonator){
+//     $.ajax({
+//         url: '/VTBook/Ajax/checkUsername',
+//         method: "POST",
+//         data: {un: $inputDonator},
+//         dataType: "json",
+//         success: function (data) {
+//                 $($outputDonator).val(data[0].user_id);
+//                 console.log($($outputDonator).val(data[0].user_id));
+//         }
+//     });
+// }
+
+
 $(document).ready(function (){
-    
+
     //Show book table
     if ($('#tblAllVTBooks').length) {
         initBookData();
@@ -120,12 +165,109 @@ $(document).ready(function (){
             //table.reload(null, false);
         });
 
-        //Click row table
-        $('#tblAllVTBooks').on( 'click', 'tbody tr', function () {
-            var id = tblBooks.row( this ).id();
+        //Click row book table to update
+        $('#tblAllVTBooks').on( 'dblclick', 'tbody tr', function (event) {
+            event.preventDefault();
+            var book_id = tblBooks.row( this ).id();
          
-            alert( 'Clicked row id '+id );
+            $("#updateBook").modal("show");
+            $.ajax({
+                url: '/VTBook/API_Books/GetInfoBaseBookID/"'+book_id+'"',
+                method: "POST",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    // console.log(data); 
+                    $("#updateBookID").val(data.BookInfo[0].book_id);
+                    $("#updateBookName").val(data.BookInfo[0].book_name);
+                    $("#updateBookDes").val(data.BookInfo[0].book_description);
+                     
+                    //select category
+                    if ($('#updateBookCategory option').length == 0){
+                        data.CategoryList.forEach(function (CategoryList) {
+                            $("#updateBookCategory").append("<option value=" + CategoryList.cat_id + ">" + CategoryList.cat_name + "</option>");
+                        });
+                    }
+                    $("#updateBookCategory").val(data.BookInfo[0].cat_id);
+
+                    //select status
+                    if ($('#updateBookStatus option').length == 0){
+                        data.BookStatusList.forEach(function (BookStatusList) {
+                            $("#updateBookStatus").append("<option value=" + BookStatusList.b_status_id + ">" + BookStatusList.b_status + "</option>");
+                        });
+                    }
+                    $("#updateBookStatus").val(data.BookInfo[0].b_status_id);
+                    
+                    //select status
+                    if ($('#updateAuthor option').length == 0){
+                        data.AuthorList.forEach(function (AuthorList) {
+                            $("#updateAuthor").append("<option value=" + AuthorList.aut_id + ">" + AuthorList.aut_name + "</option>");
+                        });
+                    }
+                    $("#updateAuthor").val(data.BookInfo[0].aut_id);
+
+                    //select publisher
+                    if ($('#updatePublisher option').length == 0){
+                        data.PublisherList.forEach(function (PublisherList) {
+                            $("#updatePublisher").append("<option value=" + PublisherList.pub_id + ">" + PublisherList.pub_name + "</option>");
+                        });
+                    }
+                    $("#updatePublisher").val(data.BookInfo[0].pub_id);
+
+                    //select donator
+                    $("#updateDonator").val(data.BookInfo[0].user_name);
+                    $("#hiddenUptDonator").val(data.BookInfo[0].donator_id); 
+
+
+                    //select isdonate
+                    if ($('#updateIsdonate option').length == 0){
+                        $("#updateIsdonate").append('<option value="Y">Donate</option>');
+                        $("#updateIsdonate").append('<option value="N">Borrow</option>');
+                    }
+                    $("#updateIsdonate").val(data.BookInfo[0].Isdonate); 
+                }
+            });
         } );
     }
+
+
+    //Check donator in addBookForm
+    $("#inputDonator").change(function(){
+        var user=$(this).val();
+        hiddenDonatorID = '#hiddenDonatorID';
+        mesDonator = '#mesDonator';
+        checkDonator(user, hiddenDonatorID, mesDonator);
+    });
+
+    //Check donator in updateBookForm
+    $("#updateDonator").change(function(){
+        var user=$(this).val();
+        hiddenDonatorID = '#hiddenUptDonator';
+        mesDonator = '#mesUptDonator';
+        checkDonator(user, hiddenDonatorID, mesDonator);
+    });
+
+    //Check borrow user in updateBookForm
+    $("#addBrrUser").change(function(){
+        var user=$(this).val();
+        hiddenDonatorID = '#hiddenaddBrrUser';
+        mesDonator = '#mesaddBrrUser';
+        checkDonator(user, hiddenDonatorID, mesDonator);
+    });
+
+    //Control active header menu
+    $("ul li a").click(function(event) { 
     
+        $("li a").removeClass("active"); //Remove any "active" class 
+        $(this).addClass("active"); //Add "active" class to selected tab // 
+        // $(activeTab).show(); //Fade in the active content 
+    });
+
+    //Datepicker for books
+    $( "#brrDate" ).datepicker({
+        "autoclose": true,
+        todayHighlight: true,
+        todayBtn: true
+    });
+
 });

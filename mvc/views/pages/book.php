@@ -1,26 +1,7 @@
 <div>
 
 <div class="table_view my-4">
-    <?php
-    //pre-process data
-    //$printedData = json_decode($data['dbBook'], true);
-    //$printedData = ($data['dbBook']);
-    //$tableHeader = ['Book ID', 'Book name', 'Description'];
-    //$dataOrder =    ['book_id','book_name','book_description'];
-    //echo $data['dbBook'];
-    //echo ($data['dbBook']);
-    //print_r ($printedData);
-    //echo ($printedData);
-    //Build up a table
-    //tableBuildUp($tableHeader, $dataOrder, $printedData);
 
-    //  while($row = mysqli_fetch_array($data['dbBook'])){
-    //     echo $row["book_name"];
-    //     echo $row["book_description"];
-        
-    //  }
-    
-    ?>
     <h1 class="display-4 text-primary">All books</h1>
     <div class="table-responsive">
         <table id="tblAllVTBooks" class="table table-hover">
@@ -44,7 +25,6 @@
     </div>
     <button type="button" class="btn btn-primary float-end" id="btnRefeshBook">Refresh</button>
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUpdateBook" id="btnAddBook">ADD</button>
-    <button type="button" class="btn btn-warning" id="btnUptBook">UPDATE</button>
     <button type="button" class="btn btn-danger" id="btnDelBook">DELETE</button>
 </div>
 
@@ -52,16 +32,6 @@
 <!-- Modal add Book form-->
 <?php require_once "./mvc/views/blocks/addBookForm.php" ?>
 
-<!-- Notification add/upate success -->
-<?php if( isset($data["result"]) ){ ?>
-    <?php 
-        if ($data["result"] == true ){
-            echo '<div class="alert alert-success alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Success!</strong> This alert box could indicate a successful or positive action.
-            </div>';
-        }else{
-            echo "Đăng kí thất bại";
-        }
-    ?>
-<?php } ?>
+<!-- Modal update Book form-->
+<?php require_once "./mvc/views/blocks/updateBookForm.php" ?>
+
