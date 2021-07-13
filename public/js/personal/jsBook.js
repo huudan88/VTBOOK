@@ -25,7 +25,8 @@ function initBookData(){
                     'aut_name' : json[i].aut_name,
                     'pub_name' : json[i].pub_name,
                     'Isdonate' : json[i].Isdonate,
-                    'user_name' : json[i].user_name
+                    'user_name' : json[i].user_name,
+                    // 'action':null
                   })
                 }
                 return return_data;
@@ -49,20 +50,58 @@ function initBookData(){
                     }
                 } 
             },
-            { data: 'user_name' }
-        ]
+            { data: 'user_name' },
+            // { data: 'action' },
+            // Add button borrow
+            {"data": null,
+                "render": function (data, type, row, meta) {
+                        //return '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBrrBook" id="btnBrr'+data.book_id+'">Borrow</button>'
+                        return '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBrrBook">Borrow</button>'
+                    }
+            }
+        ],
+        // Add button borrow
+        // "columnDefs": [ {
+        //     "targets": -1,
+        //     "data": null,
+        //     //"data": 'book_id',
+        //     // "render": function (data, type, row, meta) {
+        //     //     return '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBrrBook" id="btnBrr'+data+'">Borrow</button>'
+        //     // }
+        //     //"defaultContent": '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBrrBook" id="btnBrr'+data+'">Borrow</button>'
+        //     "defaultContent": '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBrrBook">Borrow</button>'
+        // } ]
+    });
+}
+
+// get NextID
+function nextId($inputNextId,$prefix,$tblName){
+    $.ajax({
+        url: '/VTBook/API_Books/nextId/"' + $prefix +'"/"' + $tblName + '"',
+        method: "POST",
+        data: {},
+        dataType: "json",
+        success: function (data) {
+           //set nextID
+           $($inputNextId).val(data[0].NextId); 
+        }
     });
 }
 
 // Function get data to addBookForm
 $("#btnAddBook").on('click', function (event) {
     event.preventDefault();
+    var prefix = "VT_Book";
+    var tblName = "books";
+    var idInput = '#inputBookID';
+
     $.ajax({
-        url: "/VTBook/API_Books/getInfoBooks",
+        url: '/VTBook/API_Books/getInfoBooks/',
         method: "POST",
         data: {},
         dataType: "json",
         success: function (data) {
+
             //select category
             if ($('#inputBookCategory option').length == 0){
                 data.CategoryList.forEach(function (CategoryList) {
@@ -99,7 +138,10 @@ $("#btnAddBook").on('click', function (event) {
             }         
         }
     });
-
+    
+    //set bookID
+    nextId(idInput,prefix,tblName);
+    
     // $("#addUpdateBook").modal("show");
 });
 
@@ -128,20 +170,6 @@ function checkDonator($inputDonator,$outputDonator,$noti){
     });
 }
 
-// //Function get donator ID
-// function getDonator($inputDonator,$outputDonator){
-//     $.ajax({
-//         url: '/VTBook/Ajax/checkUsername',
-//         method: "POST",
-//         data: {un: $inputDonator},
-//         dataType: "json",
-//         success: function (data) {
-//                 $($outputDonator).val(data[0].user_id);
-//                 console.log($($outputDonator).val(data[0].user_id));
-//         }
-//     });
-// }
-
 
 $(document).ready(function (){
 
@@ -150,7 +178,7 @@ $(document).ready(function (){
         initBookData();
 
         //Mouse event for header of book table
-        $("#list-header").on({
+        $("#headerBook").on({
             mouseenter: function(){
                 $(this).css("background-color","lightwhite");
             },
@@ -158,6 +186,7 @@ $(document).ready(function (){
                 $(this).css("background-color","lightgray");
             }
         });
+
         //refeshBook table
         $("#btnRefeshBook").on("click", function(){
             //alert("reload data...")
@@ -232,13 +261,37 @@ $(document).ready(function (){
                     $("#updateIsdonate").val(data.BookInfo[0].Isdonate); 
                 }
             });
+        });
+
+        //Click borrow button to borrow book
+        $('#tblAllVTBooks').on( 'click', 'button', function (event) {
+            event.preventDefault();
+            var book_id = tblBooks.row( $(this).parents('tr') ).id();
+            var prefix = "BRR_";
+            var tblName = "borrow";
+            var idInput = '#addBrrID';
+
+            // Add book info to update form
+            $.ajax({
+                url: '/VTBook/API_Books/GetInfoBaseBookID/"'+book_id+'"',
+                method: "POST",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    // console.log(data); 
+                    $("#brrBookID").val(data.BookInfo[0].book_id);
+                    $("#brrBookName").val(data.BookInfo[0].book_name);
+                }
+            });
+            //set borrow ID
+            nextId(idInput,prefix,tblName);
 
         });
     }
 
 
     //Check donator in addBookForm
-    $("#inputDonator").change(function(){
+    $("#inputDonator").on('keyup change',function(){
         var user=$(this).val();
         hiddenDonatorID = '#hiddenDonatorID';
         mesDonator = '#mesDonator';
@@ -246,15 +299,15 @@ $(document).ready(function (){
     });
 
     //Check donator in updateBookForm
-    $("#updateDonator").change(function(){
+    $("#updateDonator").on('keyup change',function(){
         var user=$(this).val();
         hiddenDonatorID = '#hiddenUptDonator';
         mesDonator = '#mesUptDonator';
         checkDonator(user, hiddenDonatorID, mesDonator);
     });
 
-    //Check borrow user in updateBookForm
-    $("#addBrrUser").change(function(){
+    //Check borrow user in addBorrowForm
+    $("#addBrrUser").on('keyup change',function(){
         var user=$(this).val();
         hiddenDonatorID = '#hiddenaddBrrUser';
         mesDonator = '#mesaddBrrUser';
@@ -275,14 +328,13 @@ $(document).ready(function (){
         todayHighlight: true,
         todayBtn: true
     });
-
-    // enable to update borrow
-    $("#flexBrrBook").change(function(){
-        if($('#flexBrrBook').is(":checked")){
-            $('#brrDate').prop('disabled', false)
-            console.log("test")
+    
+    // enable to edit BookID
+    $("#flexAddBook").change(function(){
+        if($('#flexAddBook').is(":checked")){
+            $('#inputBookID').prop('readonly', false)
         }else{
-            $('#brrDate').prop('disabled', true)
+            $('#inputBookID').prop('readonly', true)
         }
     });    
 });

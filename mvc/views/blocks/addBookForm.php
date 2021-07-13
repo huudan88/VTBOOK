@@ -9,12 +9,23 @@
         <div class="modal-body">
             <!-- Form add Book-->
             <form class="row g-3" action="/VTBook/Book/insertBook"  method="post">
-                <div class="col-md-3">
-                    <label for="inputBookID" class="form-label">Book ID</label>
-                    <input type="text" class="form-control" name="BookID" id="inputBookID">
+                <!-- BookID switch -->
+                <div class="col-md-6">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexAddBook" />
+                        <label class="form-check-label" for="flexAddBook"
+                            >Switch to edit BookID</label>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    <label for="inputBookName" class="form-label">Book name</label>
+                <div class="col-md-6 d-flex flex-row-reverse">
+                    <label class="form-label text-danger">(*) The field must not be blank</label>
+                </div>
+                <div class="col-md-4">
+                    <label for="inputBookID" class="form-label">Book ID (*)</label>
+                    <input type="text" class="form-control" name="BookID" id="inputBookID" readonly="true">   
+                </div>
+                <div class="col-md-8">
+                    <label for="inputBookName" class="form-label">Book name (*)</label>
                     <input type="text" class="form-control" name="BookName" id="inputBookName">
                 </div>
 

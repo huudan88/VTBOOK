@@ -25,8 +25,8 @@
         </table>
     </div>
     <button type="button" class="btn btn-primary float-end" id="btnReBrrBook">Refresh</button>
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addBrrBook" id="btnAddBrrBook">ADD</button>
-    <button type="button" class="btn btn-danger" id="btnDelBrrBook">DELETE</button>
+    <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addBrrBook" id="btnAddBrrBook">ADD</button> -->
+    <!-- <button type="button" class="btn btn-danger" id="btnDelBrrBook">DELETE</button> -->
 </div>
 
 </div>

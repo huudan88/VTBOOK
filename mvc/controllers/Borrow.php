@@ -24,8 +24,39 @@ class Borrow extends Controller{
         ]);
     }
 
-    // Insert book data
-    
+    // Insert borrow data
+    function insertBrrBook(){
+        // get data from Book form
+        if( isset($_POST["btnSubmitAddBrr"])){
+            $borrow_id = $_POST["BorrowID"];
+            $book_id = $_POST["brrBookID"];
+            $user_id = $_POST["BrrUser"];
+            $b_status_id = "BOR";
+            $borrow_date = $_POST["brrDate"];
+            $borrow_note = $_POST["brrNote"];
+            $creater = $this->createrDefault;
+            $create_date = date("Y-m-d");
+        }
+
+        //Insert book data
+        $isSuccess = $this->BorrowModel->insertBrrBook(
+                                                    $borrow_id,
+                                                    $user_id,
+                                                    $book_id,
+                                                    $b_status_id,
+                                                    $borrow_date,
+                                                    $borrow_note,
+                                                    $creater,
+                                                    $create_date
+                                                );
+        // echo $isSuccess;
+
+        // Show notification
+        $this->requireView("Master1", [
+            "page" => "borrowView",
+            "result" => $isSuccess
+        ]);
+    }
 
 }
 ?>

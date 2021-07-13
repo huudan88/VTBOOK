@@ -41,5 +41,13 @@ class InfoModel extends DB{
         return $autList;
     }
 
+    //Get next ID
+    function getNextId($prefix, $tblName){
+        //call function
+        $sql = "SELECT getNextId($prefix,$tblName) AS NextId"; 
+        $nextId = $this->sqlExecution($sql);
+        return $nextId;
+    }
+
 }
 ?>

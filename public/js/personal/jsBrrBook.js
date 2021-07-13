@@ -49,12 +49,47 @@ function initBrrData(){
     });
 }
 
+//Click borrow button
+// $('#tblAllVTBooks').on( 'click', 'td button', function (event) {
+//     event.preventDefault();
+//     // $("#addBrrBook").modal("show");
+//     // alert(2);
+// });
+
 $(document).ready(function (){
 
-    //Show book table
+    //Show borrow book table
     if ($('#tblBorrowBooks').length) {
         initBrrData();
         // console.log("test")
     };
 
+    // //Show borrow book table
+    // if ($('#addBrrBook').length) {
+    //     //initBrrData();
+    //     console.log("test");
+    // };
+
+    // enable to update borrow
+    // $("#flexBrrBook").change(function(){
+    //     //Enable field
+    //     if($('#flexBrrBook').is(":checked")){
+    //         $('#updateBrrBookID').prop('disabled', false)
+    //         $('#addBrrUser').prop('disabled', false)
+    //         $('#hiddenaddBrrUser').prop('disabled', false)
+    //         $('#brrDate').prop('disabled', false)
+    //         $('#brrNote').prop('disabled', false)
+
+    //         // Set borrow ID
+    //         nextId('#updateBrrBookID','BRR','borrow');
+
+    //     }else{
+    //         $('#updateBrrBookID').prop('disabled', true)
+    //         $('#addBrrUser').prop('disabled', true)
+    //         $('#hiddenaddBrrUser').prop('disabled', true)
+    //         $('#brrDate').prop('disabled', true)
+    //         $('#brrNote').prop('disabled', true)
+    //     }
+
+    // });
 });

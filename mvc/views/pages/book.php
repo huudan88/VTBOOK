@@ -6,7 +6,7 @@
     <div class="table-responsive">
         <table id="tblAllVTBooks" class="table table-hover">
         <thead>
-            <tr id="list-header" class="text-primary">
+            <tr id="headerBook" class="text-primary">
             <th scope="col">#</th>
             <th scope="col">Book ID</th>
             <th scope="col">Book name</th>
@@ -16,6 +16,7 @@
             <th scope="col">Publisher</th>
             <th scope="col">Source</th>
             <th scope="col">Donator</th>
+            <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +26,8 @@
     </div>
     <button type="button" class="btn btn-primary float-end" id="btnRefeshBook">Refresh</button>
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUpdateBook" id="btnAddBook">ADD</button>
-    <button type="button" class="btn btn-danger" id="btnDelBook">DELETE</button>
+    
+    <!-- <button type="button" class="btn btn-danger" id="btnDelBook">DELETE</button> -->
 </div>
 
 </div>
@@ -34,4 +36,7 @@
 
 <!-- Modal update Book form-->
 <?php require_once "./mvc/views/blocks/updateBookForm.php" ?>
+
+<!-- Modal borrow Book form-->
+<?php require_once "./mvc/views/blocks/addBorrowForm.php" ?>
 

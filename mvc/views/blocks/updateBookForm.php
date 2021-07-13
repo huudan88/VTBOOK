@@ -9,12 +9,16 @@
         <div class="modal-body">
             <!-- Form add/update Book-->
             <form class="row g-3" action="/VTBook/Book/updateBook"  method="post">
+                <div class="col-12 d-flex flex-row-reverse">
+                    <label class="form-label text-danger">(*) The field must not be blank</label>
+                </div>
+
                 <div class="col-md-3">
-                    <label for="updateBookID" class="form-label">Book ID</label>
+                    <label for="updateBookID" class="form-label">Book ID (*)</label>
                     <input type="text" class="form-control" name="BookID" id="updateBookID" readonly="true">
                 </div>
                 <div class="col-md-9">
-                    <label for="updateBookName" class="form-label">Book name</label>
+                    <label for="updateBookName" class="form-label">Book name (*)</label>
                     <input type="text" class="form-control" name="BookName" id="updateBookName">
                 </div>
 
@@ -65,37 +69,9 @@
                     </select>
                 </div>
 
-                <!-- Borrow switch -->
-                <div class="col-12">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexBrrBook" />
-                        <label class="form-check-label" for="flexBrrBook"
-                            >Switch to update borrow</label>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <label for="updateBrrBookID" class="form-label">Borrow ID</label>
-                    <input type="text" class="form-control" name="BorrowID" id="updateBrrBookID" readonly="true" disabled>
-                </div>
-                <div class="col-md-4">
-                    <label for="addBrrUser" class="form-label">Borrower</label>
-                    <input type="text" class="form-control" name="BrrUserDisplay" id="addBrrUser" disabled>
-                    <input type="hidden" class="form-control" name="BrrUser" id="hiddenaddBrrUser" disabled>
-                    <div id="mesaddBrrUser"></div>
-                </div>
-                <div class="col-md-4">
-                    <label for="brrDate" class="form-label">Borrow date</label>
-                    <input type="text" class="form-control" name="brrDate" id="brrDate" disabled>
-                </div>
-                <div class="col-12">
-                    <label for="brrNote" class="form-label">Borrow note</label>
-                    <textarea class="form-control" rows="3" name="brrNote" id="brrNote" disabled></textarea>
-                </div>
-
-
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary" name="btnSubmitUpdateBook" id="btnSubmitBook">Submit</button>
+                  <button type="submit" class="btn btn-primary" name="btnSubmitUpdateBook" id="btnSubmitUpdBook">Submit</button>
                 </div>
             </form>
         </div>

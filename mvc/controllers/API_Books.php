@@ -22,32 +22,24 @@ class API_Books extends Controller{
     function getInfoBooks(){
         // Get user
         $userList = $this->InfoModel->getUsers();
-        // echo "\"UserList\" : ".$userList;
        
         // Get category
         $categoryList = $this->InfoModel->getBookCategory();
-        // echo "\"categoryList\" : ".$categoryList;
 
         // Get publisher
         $pubList = $this->InfoModel->getPublisher();
-        // echo "\"pubList\" : ".$pubList;
 
         // Get authors
         $autList = $this->InfoModel->getAuthor();
-        // echo "\"autList\" : ".$autList;
 
         // Get book status
         $bookSttList = $this->InfoModel->getBookStatus();
-        // echo "\"bookSttList\" : ".$bookSttList;
 
-        // $inforbook = "{\"UserList\" : ".$userList.",".
-        //             "\"CategoryList\" : ".$categoryList.",".
-        //             "\"PublisherList\" : ".$pubList.",".
-        //             "\"BookStatusList\" : ".$bookSttList.",".
-        //             "\"AuthorList\" : ".$autList."}";
-        // echo $inforbook;
+        // // Get book status
+        // $nextBookId = $this->InfoModel->getNextId($prefix,$tblName);
         
         echo json_encode([
+            // 'NextBookId' => $nextBookId,
 			'UserList' => $userList,
 			'CategoryList' =>  $categoryList,
 			'PublisherList' => $pubList,
@@ -64,23 +56,18 @@ class API_Books extends Controller{
 
         // Get user
         $userList = $this->InfoModel->getUsers();
-        // echo "\"UserList\" : ".$userList;
        
         // Get category
         $categoryList = $this->InfoModel->getBookCategory();
-        // echo "\"categoryList\" : ".$categoryList;
 
         // Get publisher
         $pubList = $this->InfoModel->getPublisher();
-        // echo "\"pubList\" : ".$pubList;
 
         // Get authors
         $autList = $this->InfoModel->getAuthor();
-        // echo "\"autList\" : ".$autList;
 
         // Get book status
         $bookSttList = $this->InfoModel->getBookStatus();
-        // echo "\"bookSttList\" : ".$bookSttList;
         
         echo json_encode([
             'BookInfo' => $bookInfo,
@@ -96,6 +83,12 @@ class API_Books extends Controller{
     function viewBrrBooks(){
         $brrList = $this->BorrowModel->getBorrowBooks();
         echo $brrList;
+    }
+
+    // get NextId
+    function nextId($prefix,$tblName){
+        $nextId = $this->InfoModel->getNextId($prefix,$tblName);
+        echo json_encode($nextId);
     }
 
 }
