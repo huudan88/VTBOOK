@@ -6,7 +6,7 @@
     <div class="table-responsive">
         <table id="tblBorrowBooks" class="table table-hover">
         <thead>
-            <tr id="list-header" class="text-primary">
+            <tr class="list-header text-primary">
             <th scope="col">#</th>
             <th scope="col">Transaction ID</th>
             <th scope="col">Book ID</th>
@@ -30,5 +30,7 @@
 </div>
 
 </div>
+
+
 
 

@@ -39,7 +39,7 @@ function initBookData(){
             { data: 'book_id' },		
             { data: 'book_name' },
             { data: 'cat_name' },
-            { data: 'b_status' },
+            { data: 'b_status'},
             { data: 'aut_name' },
             { data: 'pub_name' },
             { data: 'Isdonate', render: function(data){
@@ -53,13 +53,28 @@ function initBookData(){
             { data: 'user_name' },
             // { data: 'action' },
             // Add button borrow
-            {"data": null,
-                "render": function (data, type, row, meta) {
-                        //return '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBrrBook" id="btnBrr'+data.book_id+'">Borrow</button>'
-                        return '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBrrBook">Borrow</button>'
+            {data: 'b_status',
+                render: function (data, type, row, meta) {
+                        if ( data === 'Available' ) {
+                            //return '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBrrBook" id="btnBrr'+data.book_id+'">Borrow</button>'
+                            return '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBrrBook">Borrow</button>'
+                        }
+                        else {
+                            return '<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updBrrBook">Return</button>'
+                        }
                     }
-            }
+            },          
         ],
+
+        // // Highlight borrow book
+        createdRow: function ( node, data ) {
+            if ( data.b_status === 'Borrowed' ) {
+              $(node).addClass( 'stt-borr' );
+            }
+        }
+
+        // "aLengthMenu": [[15, 30, 50, -1], [15, 30, 50, "All"]],
+        // "iDisplayLength": 15
         // Add button borrow
         // "columnDefs": [ {
         //     "targets": -1,
@@ -171,21 +186,21 @@ function checkDonator($inputDonator,$outputDonator,$noti){
 }
 
 
-$(document).ready(function (){
+$(document).ready(function (){        
 
     //Show book table
     if ($('#tblAllVTBooks').length) {
         initBookData();
 
         //Mouse event for header of book table
-        $("#headerBook").on({
-            mouseenter: function(){
-                $(this).css("background-color","lightwhite");
-            },
-            mouseleave: function(){
-                $(this).css("background-color","lightgray");
-            }
-        });
+        // $("#headerBook").on({
+        //     mouseenter: function(){
+        //         $(this).css("background-color","lightwhite");
+        //     },
+        //     mouseleave: function(){
+        //         $(this).css("background-color","lightgray");
+        //     }
+        // });
 
         //refeshBook table
         $("#btnRefeshBook").on("click", function(){
@@ -200,7 +215,7 @@ $(document).ready(function (){
             var book_id = tblBooks.row( this ).id();
 
             // Set borrow check box default
-            $("#flexBrrBook").prop('checked', false);
+            // $("#flexBrrBook").prop('checked', false);
             // Show updateBook modal
             $("#updateBook").modal("show");
 

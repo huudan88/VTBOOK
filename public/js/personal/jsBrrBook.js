@@ -61,14 +61,8 @@ $(document).ready(function (){
     //Show borrow book table
     if ($('#tblBorrowBooks').length) {
         initBrrData();
-        // console.log("test")
+        // console.log("test")       
     };
-
-    // //Show borrow book table
-    // if ($('#addBrrBook').length) {
-    //     //initBrrData();
-    //     console.log("test");
-    // };
 
     // enable to update borrow
     // $("#flexBrrBook").change(function(){
@@ -92,4 +86,6 @@ $(document).ready(function (){
     //     }
 
     // });
+
+   
 });

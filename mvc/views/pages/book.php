@@ -6,7 +6,7 @@
     <div class="table-responsive">
         <table id="tblAllVTBooks" class="table table-hover">
         <thead>
-            <tr id="headerBook" class="text-primary">
+            <tr class="list-header text-primary">
             <th scope="col">#</th>
             <th scope="col">Book ID</th>
             <th scope="col">Book name</th>
@@ -39,4 +39,7 @@
 
 <!-- Modal borrow Book form-->
 <?php require_once "./mvc/views/blocks/addBorrowForm.php" ?>
+
+<!-- Modal update borrow Book form -->
+<?php require_once "./mvc/views/blocks/updateBrrowForm.php" ?>
 
